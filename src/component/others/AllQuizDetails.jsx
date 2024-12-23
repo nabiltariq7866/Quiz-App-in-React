@@ -6,13 +6,10 @@ import Modal from "./Modal";
 const AllQuizDetails = () => {
   const context = useContext(AppContext);
   const [selectedQuiz, setSelectedQuiz] = useState(null);
-  console.log(selectedQuiz);
-  console.log(context.quizData);
   function handleButtonClick(email) {
-    console.log(email);
     setSelectedQuiz(email);
     context.setIsOpen(true);
-    // console.log("emailclick odel");
+   
   }
   return (
     <div className="max-w-[450px] penal1 min-h-52 bg-transparent  shadow-2xl  p-6 m-auto flex flex-col items-start mt-[150px] rounded-md">

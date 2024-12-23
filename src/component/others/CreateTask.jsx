@@ -7,7 +7,6 @@ const CreateTask = () => {
  const context = useContext(AppContext);
    
   function handleSelectedAnswer(e) {
-    console.log(e.target.value)
     setSelectedAnswer(e.target.value)
     
   }
@@ -20,14 +19,13 @@ const CreateTask = () => {
     context.setCorrectAnswer(option[context.correctAnswer]);
     let correctAnswer;
     {data.QuestionType==="boolvalue"?correctAnswer=context.correctAnswer:correctAnswer=option[context.correctAnswer]}
-    console.log(correctAnswer)
+
     data={
       ...data,
       id:Date.now(),
       option,
       correctAnswer
     }
-    console.log(data)
     context.setAdminQuestionCollection((prev)=>[
       ...prev,data
     ])

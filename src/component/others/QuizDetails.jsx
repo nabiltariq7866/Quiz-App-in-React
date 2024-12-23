@@ -8,15 +8,11 @@ const QuizDetails = ({ selectedQuiz
  }) => {
   const context = useContext(AppContext);
   const [selectedQuizdetail, setselectedQuizdetail]= useState(null);
-  console.log(context.isOpen);
-  console.log(selectedQuizdetail);
   useEffect(() => {
-    console.log("enter");
 
     setselectedQuizdetail(null)
   }, [selectedQuiz]);
   function handleSetReault(quizDetails) {
-    console.log(quizDetails);
     setselectedQuizdetail(quizDetails);
     context.setIsOpen(true);
   }

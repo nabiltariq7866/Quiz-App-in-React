@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import AppContext from "../../context/AuthContext";
 import { useNavigate, replace } from "react-router-dom";
-import wellcome from "../../assets/welcome.png";
 import wellcome1 from "../../assets/welcome1.png";
 import login from "../../assets/login.png";
 import { MdAttachEmail } from "react-icons/md";
@@ -9,17 +8,6 @@ import { TbLockPassword } from "react-icons/tb";
 const Login = () => {
   const context = useContext(AppContext);
   const navigate = useNavigate();
-
-  // const [loginData, setLoginData] = useState({
-  //   email: "",
-  //   password: "",
-  // });
-  // function handleLoginData(name, value) {
-  //   setLoginData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // }
   function hanldeSubmit(e) {
     e.preventDefault();
 
@@ -77,9 +65,8 @@ const Login = () => {
               type="email"
               placeholder="Enter your Email"
               required
-              // value={loginData.email}
               name="email"
-              // onChange={(e) => handleLoginData("email", e.target.value)}
+            
             />
           </div>
           <div className="border-[#21888e] overflow-hidden border-2 rounded-full flex w-full it items-center">
@@ -92,8 +79,6 @@ const Login = () => {
               placeholder="Enter your Password"
               required
               name="password"
-              // value={loginData.password}
-              // onChange={(e) => handleLoginData("password", e.target.value)}
             />
           </div>
           <button className="placeholder:text-white text-xl outline-none  bg-[#01705F] rounded-full py-3 px-5 w-[180px]">

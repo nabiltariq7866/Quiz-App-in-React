@@ -1,38 +1,34 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import QuestionOption from "./QuestionOption";
 import QuestionOptionTureFalse from "./QuestionOptionTureFalse";
 import AppContext from "../../context/AuthContext";
 const EditAdminQuestion = () => {
   const context = useContext(AppContext);
   let data = context.editAddInput;
+  const [changeAns, setChangeAns] = useState();
 
   useEffect(() => {
     if (data && data.option) {
-     
       context.setCorrectAnswer(data.option.indexOf(data.correctAnswer));
     }
   }, [data, context]);
 
   function handleSubmitQuestinAdmin(e) {
     e.preventDefault();
-    console.log("Update clicked");
 
     const form = e.target;
     const formData = new FormData(form);
     let option = formData.getAll("option");
 
     let editData = Object.fromEntries(formData.entries());
-    console.log(editData);
 
     let correctAnswer;
     if (data.QuestionType === "boolvalue") {
-      correctAnswer = context.correctAnswer; 
+      correctAnswer = context.correctAnswer;
     } else {
-      correctAnswer = option[context.correctAnswer]; 
+      correctAnswer = option[changeAns];
     }
-    console.log(correctAnswer);
 
-  
     editData = {
       ...data,
       ...editData,
@@ -40,18 +36,15 @@ const EditAdminQuestion = () => {
       option,
     };
 
-   
     const updatedQuestions = context.adminQuestionCollection.map((dataPass) => {
       if (editData.id === dataPass.id) {
-        return editData; 
+        return editData;
       }
       return dataPass;
     });
 
-    console.log(updatedQuestions);
     context.setAdminQuestionCollection(updatedQuestions);
 
-    
     context.setEditAddInput([""]);
     context.setaddInput([""]);
     context.setIsOpen(false);
@@ -81,9 +74,14 @@ const EditAdminQuestion = () => {
             </div>
 
             {data.QuestionType === "boolvalue" && <QuestionOptionTureFalse />}
-            {data.QuestionType === "mcqs" && <QuestionOption data={data} />}
+            {data.QuestionType === "mcqs" && (
+              <QuestionOption
+                data={data}
+                edit={true}
+                setChangeAns={setChangeAns}
+              />
+            )}
 
-         
             <button className="bg-emerald-500 py-3 hover:bg-emerald-600 px-5 rounded text-sm mt-4 w-full">
               Update Question
             </button>

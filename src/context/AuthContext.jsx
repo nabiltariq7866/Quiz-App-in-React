@@ -41,7 +41,7 @@ export const AuthContext = ({ children }) => {
   const [quizData, setQuizData] =useState(getLocalStorage("quizData"));
   const [isOpen, setIsOpen] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState(null);
-  console.log(correctAnswer);
+
   const [adminQuestionCollection, setAdminQuestionCollection] = useState(
     getLocalStorage("AdminQuestionCollectin")
   );
@@ -52,7 +52,6 @@ export const AuthContext = ({ children }) => {
   }, [adminQuestionCollection]);
   useEffect(() => {
     setLocalStorage("login", userData);
-    console.log(userHistoryData)
     const userHistoryIndex = userHistoryData.findIndex(
       (entry) => entry.email === userData.email
     );

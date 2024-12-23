@@ -12,7 +12,7 @@ const Header = () => {
     context.setUserData({ login: false });
     context.setLocalStorage("login", { login: false });
   }
-  console.log(context.userData);
+ 
   return (
     <div className="flex items-center justify-between ">
       <div className="flex gap-2">
@@ -23,7 +23,7 @@ const Header = () => {
           </h1>
         </div>
         <h1 className="text-2xl font-medium mt-3 text-[#ED4ABE]  ">
-          Hi, <br />{" "}
+          Hi, <br />
           <span className="text-4xl font-semibold text-[#ED4ABE] ">
             {userName}
           </span>

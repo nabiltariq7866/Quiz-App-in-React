@@ -12,7 +12,6 @@ export default function Modal({
   return createPortal(
     <div
       onClick={() => {
-        console.log("close model");
         context.setEditAddInput([""]);
         context.setaddInput([""]);
         {

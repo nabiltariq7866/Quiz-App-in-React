@@ -1,7 +1,5 @@
 import React, { useRef } from "react";
 import NavBar from "./NavBar";
-import Login from "../Auth/Login";
-import manlogo from "../../assets/manlogo.png";
 import quizbg from "../../assets/quizbg.png";
 const Home = () => {
   return (
@@ -25,7 +23,6 @@ const Home = () => {
             </p>
           </div>
           <div className="w-1/2 flex flex-col ">
-            {/* <img src={manlogo} alt="" className="w-[90%]" /> */}
             <img src={quizbg} alt="" className="w-[100%]" />
           </div>
         </div>

@@ -9,26 +9,14 @@ const AllQuestionAdmin = () => {
   const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
   const [chartData, setChartData] = useState({});
   const [activeModal, setActiveModal] = useState(null);
-  // let quizDataUpdate=context.quizData;
   const navigate = useNavigate();
   useEffect(() => {
-    // This will log and show the updated chartData every time it changes.
+   
     {
       chartData && console.log("Chart data updated: ", chartData);
     }
   }, [chartData]);
-  // useEffect(() => {
-  //   if (context.userHistoryIndex !== -1) {
-  //     const answeredQuestions =
-  //       context.userHistoryData[context.userHistoryIndex].questions.length;
-  //     const totalQuestions = context.adminQuestionCollection.length;
-  //     setIsSubmitEnabled(answeredQuestions === totalQuestions);
-  //   }
-  // }, [
-  //   context.userHistoryData,
-  //   context.adminQuestionCollection,
-  //   context.userData.email,
-  // ]);
+
   useEffect(() => {
     if (
       context.userHistoryIndex !== -1 &&
@@ -45,70 +33,7 @@ const AllQuestionAdmin = () => {
     context.userHistoryIndex,
     context.userData.email,
   ]);
-  // function handleFinalResult() {
-  //   console.log("click");
-  //   let totalScore = 0;
-  //   const temp = context.userHistoryData[context.userHistoryIndex];
-  //   console.log(temp);
-
-  //   const updatedQuestions = temp.questions.map((question) => {
-  //     console.log(question)
-  //     let questionScore = 0;
-  //     if (question.isCorrect) {
-  //       if (question.QuestionType === "mcqs") {
-  //         questionScore = 10;
-  //       } else if (question.QuestionType === "boolvalue") {
-  //         questionScore = 5;
-  //       }
-  //     }
-
-  //     totalScore += questionScore;
-  //   });
-  //   console.log(totalScore);
-  //   const newQuiz = {
-  //     quizid: Date.now(),
-  //     quizTime: new Date().toISOString(),
-  //     Questions: temp.questions,
-  //     scoreCard: totalScore,
-  //   };
-  //  let tempUserHistoryData = context.userHistoryData[context.userHistoryIndex];
-  //  tempUserHistoryData={
-  //   ...tempUserHistoryData,
-  //   scoreCard: totalScore,
-  //  }
-  // context.setUserHistoryData((prev) => {
-  //   const updatedHistory = [...prev];
-  //   updatedHistory[context.userHistoryIndex] = {
-  //     ...updatedHistory[context.userHistoryIndex],
-  //     scoreCard: totalScore,
-  //   };
-  //   return updatedHistory;
-  // });
-
-  //   const existingUserQuizData = context.quizData.find(quiz => quiz.email === temp.email);
-  //   if (existingUserQuizData) {
-  //     console.log("data")
-  //     context.setQuizData(prevQuizData =>
-  //       prevQuizData.map(quiz =>
-  //         quiz.email === temp.email
-  //           ? { ...quiz, quizzes: [...quiz.quizzes, newQuiz] }
-  //           : quiz
-  //       )
-  //     );
-  //   } else {
-
-  //     console.log("data is no")
-  //     context.setQuizData(prevQuizData => [
-  //       ...prevQuizData,
-  //       {
-  //         email: temp.email,
-  //         quizzes: [newQuiz]
-  //       }
-  //     ]);
-  //   }
-
-  //   navigate('/EmployeeDashboard/FinalResult', { replace: true });
-  // }
+ 
   function handleFinalResult() {
     console.log("click");
 

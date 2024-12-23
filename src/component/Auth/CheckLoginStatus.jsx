@@ -5,12 +5,9 @@ const CheckLoginStatus = ({Element}) => {
    const context=useContext(AppContext)
    const loginData=context.getLocalStorage("login");
    let navigate=useNavigate();
-
-   console.log(loginData);
    let newData;
    if(loginData.email){
     if(loginData.email==="usman.gcu217@gmail.com"){
-        console.log("user")
       newData={
           ...loginData,
           role:'user',
@@ -20,7 +17,6 @@ const CheckLoginStatus = ({Element}) => {
         context.setUser(newData)
         navigate("/EmployeeDashboard");
     }else  if(loginData.email==="nabiltariq7866@gmail.com"){
-      console.log("admin")
       newData={
           ...loginData,
           role:'admin',

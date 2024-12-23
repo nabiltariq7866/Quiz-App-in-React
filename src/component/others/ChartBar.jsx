@@ -1,6 +1,20 @@
 import React, { useContext, useEffect, useState, PureComponent } from "react";
 import AppContext from "../../context/AuthContext";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer, BarChart, Bar, CartesianGrid, XAxis, YAxis, Legend, Rectangle, LabelList } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Sector,
+  Cell,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Legend,
+  Rectangle,
+  LabelList,
+} from "recharts";
 import { Tooltip } from "@mui/material";
 
 const RADIAN = Math.PI / 180;
@@ -31,7 +45,6 @@ const renderCustomizedLabel = ({
 };
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 const ChartBar = ({ data }) => {
-  console.log(data);
   const context = useContext(AppContext);
   const [optionCounts, setOptionCounts] = useState({});
   useEffect(() => {
@@ -40,7 +53,6 @@ const ChartBar = ({ data }) => {
       {
         data.option &&
           data.option.map((data) => {
-            console.log(data);
             counts = {
               ...counts,
               [data]: 0,
@@ -76,62 +88,61 @@ const ChartBar = ({ data }) => {
   const chartData = Object.entries(optionCounts).map(([name, value]) => ({
     name,
     value,
-    
   }));
-  console.log(chartData);
-
 
   return (
     <div className="login-bg p-4">
       <h3 className="">{data.Question}</h3>
       <div className="flex items-center ">
-        {
-          data.QuestionType==='boolvalue'&&
-        <PieChart width={300} height={300}>
-          <Pie
-            data={chartData}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={80}
-            fill="#8884d8"
-            dataKey="value"
-          >
-            {chartData.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-        </PieChart>}
-        {
-          data.QuestionType==='mcqs'&&
+        {data.QuestionType === "boolvalue" && (
+          <PieChart width={300} height={300}>
+            <Pie
+              data={chartData}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              label={renderCustomizedLabel}
+              outerRadius={80}
+              fill="#8884d8"
+              dataKey="value"
+            >
+              {chartData.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+          </PieChart>
+        )}
+        {data.QuestionType === "mcqs" && (
           <BarChart
-          width={900}
-          height={500}
-          data={chartData}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-        
-          <XAxis dataKey="name"  style={{ fontSize: '15px', fill: 'white' }} />
-          <YAxis />
-          <Tooltip />
-          <Bar dataKey="value" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} > 
-          <LabelList
+            width={900}
+            height={500}
+            data={chartData}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <XAxis dataKey="name" style={{ fontSize: "15px", fill: "white" }} />
+            <YAxis />
+            <Tooltip />
+            <Bar
+              dataKey="value"
+              fill="#8884d8"
+              activeBar={<Rectangle fill="pink" stroke="blue" />}
+            >
+              <LabelList
                 dataKey="value"
-                position="middle"  // Position the label on top of the bar
-                style={{ fontSize: '15px', fill: 'white' }}  // Customize label style
+                position="middle" // Position the label on top of the bar
+                style={{ fontSize: "15px", fill: "white" }} // Customize label style
               />
-          </Bar>
-        </BarChart>
-          }
+            </Bar>
+          </BarChart>
+        )}
         <div>
           {chartData.map((item, index) => {
             return (

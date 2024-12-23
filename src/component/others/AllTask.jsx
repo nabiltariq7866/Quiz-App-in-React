@@ -1,14 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
-import { IoEye } from "react-icons/io5";
+
 import AppContext from "../../context/AuthContext";
-import CreateTask from "./CreateTask";
+
 import Modal from "./Modal";
 import EditAdminQuestion from "./EditAdminQuestion";
 import CreateIcon from "@mui/icons-material/Create";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PieChartIcon from "@mui/icons-material/PieChart";
-import CheckIcon from '@mui/icons-material/Check';
-import CloseIcon from '@mui/icons-material/Close';
+import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
 const AllTask = ({
   index,
   data,
@@ -17,11 +17,8 @@ const AllTask = ({
   setActiveModal,
   activeModal,
 }) => {
-  // console.log(data);
-  // console.log(finalResult);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswered, setIsAnswered] = useState(false);
-  // const [activeModal, setActiveModal] = useState(null);
   const context = useContext(AppContext);
   function handleEditfun(data) {
     context.setEditAddInput(data);
@@ -143,10 +140,12 @@ const AllTask = ({
                   onClick={() => handleAnswerClick(value)}
                 />
                 <div className="flex gap-4 items-center">
-                  <p className={`w-9 h-9 border-2 flex items-center justify-center border-gray-500 rounded-full`}>
-                   {backgroundColor==="bg-green-500"&& <CheckIcon />} 
-                   {backgroundColor==="bg-red-500"&& <CloseIcon/>} 
-                   {backgroundColor===""&&indexo+1}
+                  <p
+                    className={`w-9 h-9 border-2 flex items-center justify-center border-gray-500 rounded-full`}
+                  >
+                    {backgroundColor === "bg-green-500" && <CheckIcon />}
+                    {backgroundColor === "bg-red-500" && <CloseIcon />}
+                    {backgroundColor === "" && indexo + 1}
                   </p>
                   <p>{value}</p>
                 </div>

@@ -1,5 +1,4 @@
 import React from "react";
-import Login from "./component/Auth/Login";
 import EmployeeDashboard from "./component/Dashboard/EmployeeDashboard";
 import AdminDashboard from "./component/Dashboard/AdminDashboard";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -16,10 +15,6 @@ const App = () => {
       path: "/",
       element: <Home />,
     },
-    // {
-    //   path: "/",
-    //   element: <Login/>,
-    // },
     {
       path: "/EmployeeDashboard",
       element: (

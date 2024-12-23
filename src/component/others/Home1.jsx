@@ -1,7 +1,5 @@
 import React from "react";
-import Login from "../Auth/Login";
 import manlogo from "../../assets/manlogo.png";
-import quizbg from "../../assets/quizbg.png";
 const Home1 = () => {
   return (
     <div className="bg-[#21888E] w-[90%] context-behind p-4 rounded-md flex flex-col justify-between m-auto h-full shadow-lg">

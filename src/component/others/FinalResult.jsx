@@ -5,7 +5,6 @@ import AllTask from "./AllTask";
 const FinalResult = () => {
   const context = useContext(AppContext);
 const data = context.userHistoryData?.[context.userHistoryIndex];
-  console.log(data);
   if (!data || !data.questions) {
     return <div className="text-center">No Results Yet</div>;
   }
