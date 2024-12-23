@@ -73,18 +73,17 @@ const EditAdminQuestion = () => {
               <input
                 name="Question"
                 className="text-2xl py-1 px-2 w-full rounded outline-none bg-transparent border-[1px] border-t-gray-400 border-gray-400 mb-4"
-                defaultValue={data.Question} // Default value should come from the context
+                defaultValue={data.Question}
                 type="text"
                 placeholder="Update Question .."
                 required
               />
             </div>
 
-            {/* Render different components based on Question Type */}
             {data.QuestionType === "boolvalue" && <QuestionOptionTureFalse />}
             {data.QuestionType === "mcqs" && <QuestionOption data={data} />}
 
-            {/* Submit button */}
+         
             <button className="bg-emerald-500 py-3 hover:bg-emerald-600 px-5 rounded text-sm mt-4 w-full">
               Update Question
             </button>

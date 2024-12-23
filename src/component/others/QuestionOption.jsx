@@ -14,6 +14,8 @@ const QuestionOption = ({ data }) => {
     context.setaddInput((prev) => [...prev, ""]);
   }
   function handleCorrectAnswerChange(index) {
+    
+    console.log('option change');
     console.log(index);
     context.setCorrectAnswer(index);
   }
@@ -44,7 +46,7 @@ const QuestionOption = ({ data }) => {
         </button>
       </div>
       {context.addInput.map((item, index) => {
-        console.log(item)
+        console.log(index)
         return (
           <div
             className="flex gap-3 mb-2 items-center justify-center"
@@ -82,8 +84,9 @@ const QuestionOption = ({ data }) => {
           </div>
         );
       })}
+  
     </div>
   );
 };
-
+// edit the question option
 export default QuestionOption;

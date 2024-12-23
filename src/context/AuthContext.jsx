@@ -39,15 +39,13 @@ export const AuthContext = ({ children }) => {
   );
   const [userHistoryIndex, setUserHistoryIndex] = useState("");
   const [quizData, setQuizData] =useState(getLocalStorage("quizData"));
-  console.log(userHistoryIndex)
   const [isOpen, setIsOpen] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState(null);
-  console.log(userHistoryData);
+  console.log(correctAnswer);
   const [adminQuestionCollection, setAdminQuestionCollection] = useState(
     getLocalStorage("AdminQuestionCollectin")
   );
   const [addInput, setaddInput] = useState([""]);
-  console.log(addInput);
   const [editAddInput, setEditAddInput] = useState([""]);
   useEffect(() => {
     setLocalStorage("AdminQuestionCollectin", adminQuestionCollection);
@@ -58,7 +56,6 @@ export const AuthContext = ({ children }) => {
     const userHistoryIndex = userHistoryData.findIndex(
       (entry) => entry.email === userData.email
     );
-    console.log(userHistoryIndex);
    setUserHistoryIndex(userHistoryIndex)
   }, [userData]);
   useEffect(() => {
